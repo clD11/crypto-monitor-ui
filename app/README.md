@@ -1,5 +1,6 @@
-##Crypto Monitor UI
-UI to display graph data for crypto price vs sentiment analysis
+# Crypto Monitor UI
+
+*UI to display graph data for crypto price vs sentiment analysis*
 
 ### `yarn start`
 
