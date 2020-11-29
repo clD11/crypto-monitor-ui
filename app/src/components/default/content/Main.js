@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {Container, Co, Row, Col} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import LineGraph from "../charts/LineGraph";
-import "./Main.css"
 import ResizableBox from "./ResizableBox";
+import "./Main.css";
 
 class Main extends Component {
     render() {

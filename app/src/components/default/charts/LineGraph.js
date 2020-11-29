@@ -1,18 +1,29 @@
 import React from 'react'
 import { Chart } from 'react-charts'
+import Client from "../../app/CryptoMonitorClient";
 
 function LineGraph() {
-    const data = React.useMemo(
-        () => [
-            {
-                label: 'Series 1',
-                data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
-            },
-            {
-                label: 'Series 2',
-                data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-            }
-        ],
+
+    const data = [
+        {
+            label: 'Sentiment',
+            data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+        },
+        {
+            label: 'Price',
+            data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
+        }
+    ]
+
+    React.useMemo(
+        () => Client.get('/price-sentiment?assetpairs=XBTUSD')
+            .then(res => {
+                //console.log(res);
+                // data[0].data.push([8, 8])
+                // data[1].data.push([1, 1])
+                // console.log(data[0]);
+                // console.log(data[1]);
+            }),
         []
     )
 
@@ -23,6 +34,20 @@ function LineGraph() {
         ],
         []
     )
+
+    React.useEffect(() => {
+        data[0].data.push([8, 8])
+        data[1].data.push([1, 1])
+        console.log(data[0]);
+        console.log(data[1]);
+
+        // const assetPairs = Client.get('/price-sentiment?assetpairs=XBTUSD')
+        //     .then(res => {
+        //         console.log(res);
+        //         console.log(data[0].data.push([8, 8]));
+        //         console.log(data[1].data.push([1, 1]));
+        //     });
+    });
 
     const lineChart = (
         // A react-chart hyper-responsively and continuously fills the available
